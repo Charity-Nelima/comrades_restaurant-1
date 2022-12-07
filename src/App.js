@@ -6,6 +6,7 @@ import Menu from './components/Menu';
 import Login from './components/Login';
 import Register from './components/Register'
 import Menuitem from './components/Menuitem';
+import Admin from './components/Admin';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/menuitem' element={<Menuitem />} />
+        <Route path='/Admin' element={<Admin />} />
       </Routes>
       
     </Router> 
