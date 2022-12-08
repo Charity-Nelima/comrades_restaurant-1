@@ -1,10 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import {useNavigate} from "react-router-dom"
+import Menuitem from './Menuitem'
 
-function Menu() {
+
+function Menu(props) {
   let navigate =useNavigate()
 
   const [menu, setMenu]= useState([])
+  const [itemId, setItemId]=useState()
 
   useEffect(() => {
     fetch('http://localhost:3000/menus')
@@ -41,6 +44,7 @@ function Menu() {
     <table className="border-collapse border border-slate-400 ...">
   <thead>
     <tr className='pb-12'>
+    <th className="border border-slate-300">Number</th>
       <th className="border border-slate-300">Image</th>
       <th className="border border-slate-300">Name</th>
       <th className="border border-slate-300">Description</th>
@@ -51,13 +55,14 @@ function Menu() {
   </thead>
   <tbody>
      {menu.map((item) =>(
-          <tr>
+          <tr onClick={(e)=>setItemId(item.id)} key={item.id}>
+          <td className="border border-slate-300">{item.id}</td>
           <td className="border border-slate-300 pr-12"><img src={item.image} alt="Food" className="h-12 w-24"/></td>
           <td className="border border-slate-300 pr-12">{item.name}</td>
           <td className="border border-slate-300 ">{item.description}</td>
           <td className="border border-slate-300">{item.price}</td>
           <td className="border border-slate-300 pr-12">Order</td>
-          <td className="border border-slate-300"><a className="text-blue-600" onClick={()=>{ navigate("/login")}}>Review</a></td>
+          <td className="border border-slate-300"><a className="text-blue-600" onClick={()=>{navigate("/menuitem",{state: {food: item}})}}>Review</a></td>
         </tr>
      ))}
          
@@ -67,7 +72,6 @@ function Menu() {
 </div>
 <h1 className="ml-12 font-bold tracking-wider">ENJOY!</h1>
 </div>
-  );
-}
+  );}
 
 export default Menu;
