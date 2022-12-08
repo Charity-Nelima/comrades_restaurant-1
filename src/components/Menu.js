@@ -17,8 +17,8 @@ function Menu() {
   return (
     <div className='flex flex-col'>
       
-       <h1 className='ml-12'>MENU ......................</h1>
-      <h1 className='ml-12 mt-8'>CHECK OUR TASTY MENU</h1>
+       <h1 className='ml-12 font-mono font-bold tracking-wider'>MENU ......................</h1>
+      <h1 className='ml-12 mt-8 font-serif font-bold text-orange-500'>CHECK OUR TASTY MENU</h1>
 
       <div className='mx-8 mt-12'>
       <ul className="flex flex-row mx-8">
@@ -40,7 +40,7 @@ function Menu() {
     <div className="bg-slate-300 shadow-md rounded px-8 pt-6 pb-8 mb-4 mt-12 h-full flex flex-col mx-24">
     <table className="border-collapse border border-slate-400 ...">
   <thead>
-    <tr>
+    <tr className='pb-12'>
       <th className="border border-slate-300">Image</th>
       <th className="border border-slate-300">Name</th>
       <th className="border border-slate-300">Description</th>
@@ -65,7 +65,7 @@ function Menu() {
   </tbody>
 </table>
 </div>
-<h1>ENJOY!</h1>
+<h1 className="ml-12 font-bold tracking-wider">ENJOY!</h1>
 </div>
   );
 }
