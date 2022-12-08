@@ -57,7 +57,7 @@ function Menu() {
           <td className="border border-slate-300 ">{item.description}</td>
           <td className="border border-slate-300">{item.price}</td>
           <td className="border border-slate-300 pr-12">Order</td>
-          <td className="border border-slate-300"><a className="text-blue-600" onClick={()=>{ navigate("/menuitem")}}>Review</a></td>
+          <td className="border border-slate-300"><a className="text-blue-600" onClick={()=>{ navigate("/login")}}>Review</a></td>
         </tr>
      ))}
          
