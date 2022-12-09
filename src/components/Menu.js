@@ -5,9 +5,14 @@ import Menuitem from './Menuitem'
 
 function Menu(props) {
   const navigate =useNavigate()
-
   const [menu, setMenu]= useState([])
-  const [itemId, setItemId]=useState()
+
+  const filterResult = (category) =>{
+    const result = menu.filter((menuitem)=>{
+      return menuitem.category === category
+    })
+    setMenu(result)
+  }
 
   useEffect(() => {
     fetch('http://localhost:3000/menus')
@@ -16,7 +21,6 @@ function Menu(props) {
   },[])
  
 
-
   return (
     <div className='flex flex-col'>
       
@@ -24,31 +28,18 @@ function Menu(props) {
       <h1 className='ml-12 mt-8 font-serif font-bold text-orange-500'>CHECK OUR TASTY MENU</h1>
 
       <div className='mx-8 mt-12'>
-
-      <ul className="flex flex-row mx-8">
-        {/* {menu.filter((menu)=>(
-
-        ))} */}
-        <a className='hover:text-red-600'>
-        <li className='mx-4 font-bold'>All</li>
-        </a>
-        <a className='hover:text-red-600'>
-        <li className='mx-4 font-bold'>Breakfast</li>
-        </a>
-        <a className='hover:text-red-600'>
-        <li className='mx-4 font-bold'>Lunch</li>
-        </a>
-        <a className='hover:text-red-600'>
-        <li className='mx-4 font-bold'>Dinner</li>
-        </a> 
+      <ul className="flex flex-row mx-8"> 
+        <li className='mx-4 font-bold hover:text-red-600' onClick={()=>setMenu(menu)}>All</li>
+        <li className='mx-4 font-bold hover:text-red-600' onClick={()=>filterResult('Breakfast')}>Breakfast</li>
+        <li className='mx-4 font-bold hover:text-red-600' onClick={()=>filterResult('Lunch')} >Lunch</li>
+        <li className='mx-4 font-bold hover:text-red-600'onClick={()=>filterResult('Dinner')}>Dinner</li> 
       </ul>
       </div>
       
     <div className="bg-slate-300 shadow-md rounded px-8 pt-6 pb-8 mb-4 mt-12 h-full flex flex-col mx-24">
-    <table className="border-collapse border border-slate-400 ...">
+    <table className="border-collapse border table-fixed border-slate-400 ...">
   <thead>
     <tr className='pb-12'>
-    <th className="border border-slate-300">Number</th>
       <th className="border border-slate-300">Image</th>
       <th className="border border-slate-300">Name</th>
       <th className="border border-slate-300">Description</th>
@@ -59,8 +50,7 @@ function Menu(props) {
   </thead>
   <tbody>
      {menu.map((item) =>(
-          <tr onClick={(e)=>setItemId(item.id)} key={item.id}>
-          <td className="border border-slate-300">{item.id}</td>
+          <tr key={item.id}>
           <td className="border border-slate-300 pr-12"><img src={item.image} alt="Food" className="h-12 w-24"/></td>
           <td className="border border-slate-300 pr-12">{item.name}</td>
           <td className="border border-slate-300 ">{item.description}</td>
