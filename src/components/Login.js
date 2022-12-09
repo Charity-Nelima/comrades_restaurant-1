@@ -4,19 +4,25 @@ import {useNavigate} from "react-router-dom"
 
 function Login() {
   let navigate =useNavigate()
-  // const [token, setToken]=useState()
   const [username, setUsername]=useState()
   const [password, setPassword]= useState()
 
+  const user={
+    username,
+    password
+}
 
   function handleSubmit(e){
     e.preventDefault()
 
-    const user={
-      username,
-      password
-  }
-
+  fetch('http://localhost:3000/users', {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({user})
+  })
+  .then(response => response.json())
   }
 
   return (
@@ -35,7 +41,7 @@ function Login() {
       <input className="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3" id="password" type="password" required onChange={e => setPassword(e.target.value)}></input>
       </div>
       <div className="flex items-center justify-between px-8">
-      <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={()=>{ navigate("/menuitem")}}>
+      <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={()=>{ navigate("/menu")}}>
         Sign In
       </button>
       <a className="inline-block align-baseline font-bold text-sm font-serif hover:text-blue-600" onClick={()=>{ navigate("/register")}}>

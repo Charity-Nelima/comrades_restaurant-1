@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import {useNavigate} from "react-router-dom"
-import Menuitem from './Menuitem'
 
 
 function Menu(props) {
@@ -51,7 +50,7 @@ function Menu(props) {
   </thead>
   <tbody>
      {menu.map((item) =>(
-          <tr key={item.id}>
+          <tr key={item.id} className="px-4">
           <td className="border border-slate-300 pr-12"><img src={item.image} alt="Food" className="h-20 w-48"/></td>
           <td className="border border-slate-300 pr-12">{item.name}</td>
           <td className="border border-slate-300 ">{item.description}</td>
@@ -60,8 +59,7 @@ function Menu(props) {
           <td className="border border-slate-300"><a className="text-blue-600" onClick={()=>{navigate("/menuitem",{state: {food: item}})}}>Review</a></td>
         </tr>
      ))}
-         
-    
+          
   </tbody>
 </table>
 </div>
