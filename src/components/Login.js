@@ -7,27 +7,27 @@ function Login() {
   const [username, setUsername]=useState()
   const [password, setPassword]= useState()
 
-  const user={
-    username,
-    password
-}
+//   const user={
+//     username,
+//     password
+// }
 
-  function handleSubmit(e){
-    e.preventDefault()
+  // function handleSubmit(e){
+  //   e.preventDefault()
 
-  fetch('http://localhost:3000/users', {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({user})
-  })
-  .then(response => response.json())
-  }
+  // fetch('http://localhost:3000/users', {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json"
+  //   },
+  //   body: JSON.stringify({user})
+  // })
+  // .then(response => response.json())
+  // }
 
   return (
    
-      <form className="bg-slate-300 shadow-md rounded px-8 pt-6 pb-8 mb-4 mt-12 h-96 flex flex-col mx-64" onSubmit={handleSubmit}>
+      <form className="bg-slate-300 shadow-md rounded px-8 pt-6 pb-8 mb-4 mt-12 h-96 flex flex-col mx-64">
       <div className="mb-4 px-8 pt-12">
       <label className="block text-grey-darker text-sm font-serif font-bold mb-2" for="username">
         Username

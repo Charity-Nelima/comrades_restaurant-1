@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {useNavigate} from "react-router-dom"
 
 
-function Menu(props) {
+function Menu() {
   const navigate =useNavigate()
   const [menu, setMenu]= useState([])
   const [freshMenu, setFreshMenu] = useState([])
@@ -56,7 +56,7 @@ function Menu(props) {
           <td className="border border-slate-300 ">{item.description}</td>
           <td className="border border-slate-300">{item.price}</td>
           <td className="border border-slate-300 pr-12">Order</td>
-          <td className="border border-slate-300"><a className="text-blue-600" onClick={()=>{navigate("/menuitem",{state: {food: item}})}}>Review</a></td>
+          <td className="border border-slate-300"><button type="submit" className="rounded-full text-blue-600" onClick={()=>{navigate("/menuitem",{state: {food: item}})}}>Review</button></td>
         </tr>
      ))}
           
