@@ -6,13 +6,13 @@ function Menuitem() {
   const navigate =useNavigate()
   const location = useLocation()
   const {food} = location.state
-  const [reviews, setReviews]= useState(["Tasty", "hot","So cold", "Warm"])
+  const [reviews, setReviews]= useState([])
 
-  // useEffect(() => {
-  //   fetch(`http://localhost:3000/review/reviews/${food.id}`)
-  //   .then(response => response.json())
-  //   .then(reviews => setReviews(reviews))
-  // },[])
+  useEffect(() => {
+    fetch(`http://localhost:3000/reviews`)
+    .then(response => response.json())
+    .then(reviews => setReviews(reviews))
+  },[])
 
   
   return (
@@ -25,8 +25,8 @@ function Menuitem() {
       <p>Kshs {food.price}</p>
       <h1 className="text-lg font-extrabold">Reviews</h1>
       {reviews?.map((review)=>(
-        <div className="bg-white shandow-lg py-5">
-        <p className='text-normal leading-7'>{review}</p>
+        <div className="bg-white shandow-lg py-5"  key={review.id}>
+        <p className='text-normal leading-7'>{review.comment}</p>
         </div>
       ))}
       <p>All reviews</p>

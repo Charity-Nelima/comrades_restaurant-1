@@ -4,7 +4,7 @@ import Menuitem from './Menuitem'
 
 
 function Menu(props) {
-  let navigate =useNavigate()
+  const navigate =useNavigate()
 
   const [menu, setMenu]= useState([])
   const [itemId, setItemId]=useState()
@@ -24,7 +24,11 @@ function Menu(props) {
       <h1 className='ml-12 mt-8 font-serif font-bold text-orange-500'>CHECK OUR TASTY MENU</h1>
 
       <div className='mx-8 mt-12'>
+
       <ul className="flex flex-row mx-8">
+        {/* {menu.filter((menu)=>(
+
+        ))} */}
         <a className='hover:text-red-600'>
         <li className='mx-4 font-bold'>All</li>
         </a>
