@@ -6,20 +6,21 @@ import Menuitem from './Menuitem'
 function Menu(props) {
   const navigate =useNavigate()
   const [menu, setMenu]= useState([])
-
-  const filterResult = (category) =>{
-    const result = menu.filter((menuitem)=>{
-      return menuitem.category === category
-    })
-    setMenu(result)
-  }
+  const [freshMenu, setFreshMenu] = useState([])
 
   useEffect(() => {
     fetch('http://localhost:3000/menus')
     .then(response => response.json())
-    .then(menu => setMenu(menu))
+    .then(menu => {setMenu(menu)
+                   setFreshMenu(menu)
+    })
   },[])
- 
+  const filterResult = (category) =>{
+    const result = freshMenu.filter((menuitem)=>{
+      return menuitem.category === category
+    })
+    setMenu(result)
+  }
 
   return (
     <div className='flex flex-col'>
@@ -29,7 +30,7 @@ function Menu(props) {
 
       <div className='mx-8 mt-12'>
       <ul className="flex flex-row mx-8"> 
-        <li className='mx-4 font-bold hover:text-red-600' onClick={()=>setMenu(menu)}>All</li>
+        <li className='mx-4 font-bold hover:text-red-600' onClick={()=>setMenu(freshMenu)}>All</li>
         <li className='mx-4 font-bold hover:text-red-600' onClick={()=>filterResult('Breakfast')}>Breakfast</li>
         <li className='mx-4 font-bold hover:text-red-600' onClick={()=>filterResult('Lunch')} >Lunch</li>
         <li className='mx-4 font-bold hover:text-red-600'onClick={()=>filterResult('Dinner')}>Dinner</li> 
@@ -51,7 +52,7 @@ function Menu(props) {
   <tbody>
      {menu.map((item) =>(
           <tr key={item.id}>
-          <td className="border border-slate-300 pr-12"><img src={item.image} alt="Food" className="h-12 w-24"/></td>
+          <td className="border border-slate-300 pr-12"><img src={item.image} alt="Food" className="h-20 w-48"/></td>
           <td className="border border-slate-300 pr-12">{item.name}</td>
           <td className="border border-slate-300 ">{item.description}</td>
           <td className="border border-slate-300">{item.price}</td>
