@@ -1,6 +1,6 @@
 # Comrades Restaurant
 ##link to backend repo
-
+You can view the live page from [here] https://comrades-restaurant.vercel.app/
 
 
 ## Project members
