@@ -1,7 +1,8 @@
 # Comrades Restaurant
 ##link to backend repo
 You can view the live page from [here] https://comrades-restaurant.vercel.app/
-
+##link to back end repo
+https://github.com/Charity-Nelima/comrades_restaurant_backend
 
 ## Project members
 James Njorio:(Scrum Master)Frontend Developer(ReactJS User Interface)<br />
