@@ -1,5 +1,8 @@
 # Comrades Restaurant
 ##link to backend repo
+link to backend repo [backend repo] https://github.com/Charity-Nelima/comrades_restaurant_backend 
+
+##link to live 
 You can view the live page from [here] https://comrades-restaurant.vercel.app/
 </br>
 
